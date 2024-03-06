@@ -580,6 +580,7 @@ GameObject:
   - component: {fileID: 1711418154}
   - component: {fileID: 1711418153}
   - component: {fileID: 1711418155}
+  - component: {fileID: 1711418156}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -630,7 +631,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: da496540db0903544a8b0d28694d4799, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -760,6 +761,20 @@ MonoBehaviour:
   _direction: {x: 0, y: 0, z: 0}
   _isGrounded: 0
   _readyToJump: 0
+--- !u!114 &1711418156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1711418148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cea55738fe2f1c4429bf9e820f94662c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProjectilePrefab: {fileID: 6771195766586081813, guid: 5fa5423bca6a5f943ab52ecb540d6aa2,
+    type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

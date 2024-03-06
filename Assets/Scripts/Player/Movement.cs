@@ -44,10 +44,10 @@ public class Movement : MonoBehaviour
 
     [Header("Hidden Attributes")]
     [SerializeField, ReadOnly] public PlayerState PlayerState = PlayerState.Idle;
+    [SerializeField, ReadOnly] public Vector3 Direction;
     [SerializeField, ReadOnly] private float _horizontalInput;
     [SerializeField, ReadOnly] private float _verticalInput;
     [SerializeField, ReadOnly] private float _movespeed;
-    [SerializeField, ReadOnly] private Vector3 _direction;
     [SerializeField, ReadOnly] private bool _isGrounded;
     [SerializeField, ReadOnly] private bool _readyToJump;
 
@@ -94,13 +94,13 @@ public class Movement : MonoBehaviour
         // Assign max movespeed
         _movespeed = PlayerState == PlayerState.Crouching ? CrouchSpeed : PlayerState == PlayerState.Sprinting ? SprintSpeed : WalkSpeed;
         // Set the direction of the player
-        _direction = transform.forward * _verticalInput + transform.right * _horizontalInput;
+        Direction = transform.forward * _verticalInput + transform.right * _horizontalInput;
         
         // Apply the force to the player
         if (_isGrounded)
-            Rigidbody.AddForce(_direction.normalized * _movespeed * 10f, ForceMode.Force);
+            Rigidbody.AddForce(Direction.normalized * _movespeed * 10f, ForceMode.Force);
         else
-            Rigidbody.AddForce(_direction.normalized * _movespeed * 10f * AirMultiplier, ForceMode.Force);
+            Rigidbody.AddForce(Direction.normalized * _movespeed * 10f * AirMultiplier, ForceMode.Force);
     }
     private void SpeedController()
     {
