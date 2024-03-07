@@ -55,7 +55,7 @@ public class Movement : MonoBehaviour
     {
         Rigidbody = GetComponent<Rigidbody>();
         Collider = GetComponent<CapsuleCollider>();
-        GroundLayer = LayerMask.GetMask("Ground");
+        GroundLayer = LayerMask.GetMask("Default");
 
         _readyToJump = true;
     }

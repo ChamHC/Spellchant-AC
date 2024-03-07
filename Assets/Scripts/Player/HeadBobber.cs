@@ -11,7 +11,7 @@ public class HeadBobber : MonoBehaviour
     [SerializeField] public float CrouchBobbingSpeed = 10f;
     [SerializeField] public float WalkBobbingSpeed = 20f;
     [SerializeField] public float SprintBobbingSpeed = 40f;
-    [SerializeField] public float BobbingAmount = 0.1f;
+    [SerializeField] public float BobbingAmount = 0.05f;
 
     [Header("Hidden Attributes")]
     [SerializeField, ReadOnly] private float _defaultPosY;
