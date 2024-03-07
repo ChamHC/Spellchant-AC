@@ -462,7 +462,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 622612403}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: EDITOR_DEMO_MESH
   m_TagString: EditorOnly
   m_Icon: {fileID: 0}
@@ -578,7 +578,7 @@ GameObject:
   - component: {fileID: 1181503921}
   - component: {fileID: 1181503923}
   - component: {fileID: 1181503922}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Editor VoxelModel 0
   m_TagString: EditorOnly
   m_Icon: {fileID: 0}
@@ -1368,7 +1368,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1802083231}
   - component: {fileID: 1802083232}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Building
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1425,7 +1425,7 @@ MonoBehaviour:
   collapse: 0
   physicsOnCollapse: 0
   collapsePhysicsLimit: 0
-  totalMass: 10
+  totalMass: 10000000
   drag: 0
   angularDrag: 0.05
   constraints: 0
