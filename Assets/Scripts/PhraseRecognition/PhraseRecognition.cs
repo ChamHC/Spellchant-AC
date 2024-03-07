@@ -7,20 +7,20 @@ using UnityEngine.Windows.Speech;
 public class PhraseRecognition : MonoBehaviour
 {
     [SerializeField] private PrimitiveShoot _primitiveShoot;
-    [SerializeField] private string[] m_Keywords;
+    [SerializeField] private string[] _keywords;
     [SerializeField] private Image _vadIndicator;
-    private KeywordRecognizer m_Recognizer;
+    private KeywordRecognizer _recognizer;
 
     void Start()
     {
-        m_Recognizer = new KeywordRecognizer(m_Keywords, ConfidenceLevel.Low);
-        m_Recognizer.OnPhraseRecognized += OnPhraseRecognized;
-        m_Recognizer.Start();
+        _recognizer = new KeywordRecognizer(_keywords, ConfidenceLevel.Low);
+        _recognizer.OnPhraseRecognized += OnPhraseRecognized;
+        _recognizer.Start();
     }
 
     void Update()
     {
-        if (m_Recognizer.IsRunning)
+        if (_recognizer.IsRunning)
         {
             _vadIndicator.color = Color.green;
         }

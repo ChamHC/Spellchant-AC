@@ -45,10 +45,10 @@ public class Movement : MonoBehaviour
     [Header("Hidden Attributes")]
     [SerializeField, ReadOnly] public PlayerState PlayerState = PlayerState.Idle;
     [SerializeField, ReadOnly] public Vector3 Direction;
+    [SerializeField, ReadOnly] public bool IsGrounded;
     [SerializeField, ReadOnly] private float _horizontalInput;
     [SerializeField, ReadOnly] private float _verticalInput;
     [SerializeField, ReadOnly] private float _movespeed;
-    [SerializeField, ReadOnly] private bool _isGrounded;
     [SerializeField, ReadOnly] private bool _readyToJump;
 
     void Start()
@@ -62,7 +62,7 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        _isGrounded = CheckGrounded();
+        IsGrounded = CheckGrounded();
         InputHandler();
         SpeedController();
     }
@@ -80,7 +80,7 @@ public class Movement : MonoBehaviour
         _verticalInput = UnityEngine.Input.GetAxisRaw("Vertical");
 
         // Check if conditions to jump is met
-        if (Input.GetKey(JumpKey) && _readyToJump && _isGrounded)
+        if (Input.GetKey(JumpKey) && _readyToJump && IsGrounded)
         {
             // Perform Jump
             _readyToJump = false;
@@ -97,7 +97,7 @@ public class Movement : MonoBehaviour
         Direction = transform.forward * _verticalInput + transform.right * _horizontalInput;
         
         // Apply the force to the player
-        if (_isGrounded)
+        if (IsGrounded)
             Rigidbody.AddForce(Direction.normalized * _movespeed * 10f, ForceMode.Force);
         else
             Rigidbody.AddForce(Direction.normalized * _movespeed * 10f * AirMultiplier, ForceMode.Force);
@@ -115,7 +115,7 @@ public class Movement : MonoBehaviour
         }
 
         // Apply drag if player is on ground
-        if (_isGrounded)
+        if (IsGrounded)
             Rigidbody.drag = GroundDrag;
         else
             Rigidbody.drag = 0f;
