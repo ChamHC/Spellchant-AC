@@ -1105,7 +1105,6 @@ GameObject:
   - component: {fileID: 1711418149}
   - component: {fileID: 1711418154}
   - component: {fileID: 1711418153}
-  - component: {fileID: 1711418155}
   - component: {fileID: 1711418156}
   - component: {fileID: 1711418158}
   - component: {fileID: 1711418157}
@@ -1251,45 +1250,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 80
   m_CollisionDetection: 1
---- !u!114 &1711418155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1711418148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea65cf28dd81f1144aa0cf05cea52d5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Rigidbody: {fileID: 0}
-  Collider: {fileID: 0}
-  GroundLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  EnableSprint: 1
-  EnableCrouch: 1
-  EnableJump: 1
-  CrouchSpeed: 5
-  WalkSpeed: 10
-  SprintSpeed: 20
-  GroundDrag: 6
-  JumpForce: 12
-  JumpCD: 0.25
-  AirMultiplier: 0.4
-  ToggleSprint: 1
-  ToggleCrouch: 1
-  CrouchKey: 306
-  SprintKey: 304
-  JumpKey: 32
-  PlayerState: 0
-  Direction: {x: 0, y: 0, z: 0}
-  IsGrounded: 0
-  _horizontalInput: 0
-  _verticalInput: 0
-  _movespeed: 0
-  _readyToJump: 0
 --- !u!114 &1711418156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1346,18 +1306,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 1711418148}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0c1c3401063d274da50e3306f6084ce, type: 3}
+  m_Script: {fileID: 11500000, guid: 66ea27b895656bc498a9e66c47786c58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Rigidbody: {fileID: 0}
+  Collider: {fileID: 0}
   PlayerCam: {fileID: 0}
-  Movement: {fileID: 0}
+  GroundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  CrouchSpeed: 2
+  WalkSpeed: 4
+  SprintSpeed: 10
+  GroundDrag: 6
+  JumpForce: 12
+  JumpCD: 0.25
+  AirMultiplier: 0.4
+  DefaultHeight: 2
+  CrouchHeight: 1
   CrouchBobbingSpeed: 10
-  WalkBobbingSpeed: 20
-  SprintBobbingSpeed: 40
-  BobbingAmount: 0.05
-  _defaultPosY: 0
-  _timer: 0
-  _bobbingSpeed: 0
+  WalkBobbingSpeed: 12
+  SprintBobbingSpeed: 15
+  BobbingAmount: 0.1
+  ToggleSprint: 1
+  ToggleCrouch: 1
+  CrouchKey: 306
+  SprintKey: 304
+  JumpKey: 32
+  Direction: {x: 0, y: 0, z: 0}
+  IsGrounded: 0
+  HorizontalInput: 0
+  VerticalInput: 0
+  ReadyToJump: 0
+  DefaultPosY: 0
+  Timer: 0
 --- !u!1 &1802083230
 GameObject:
   m_ObjectHideFlags: 0

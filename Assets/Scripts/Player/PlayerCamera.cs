@@ -30,9 +30,9 @@ public class PlayerCamera : MonoBehaviour
 
     private void PlayerRotation()
     {
-        //Rotate Player on the Y axis
+        //Rotate _player on the Y axis
         _rotation.y += UnityEngine.Input.GetAxisRaw("Mouse X") * XSensitivity * 100f * Time.deltaTime;
-        //Apply the rotation to the player
+        //Apply the rotation to the _player
         transform.rotation = Quaternion.Euler(0, _rotation.y, 0);
     }
 
