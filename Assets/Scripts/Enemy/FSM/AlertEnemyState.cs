@@ -4,18 +4,22 @@ using UnityEngine;
 
 public class AlertEnemyState : EnemyState
 {
-    public override void OnCollisionEnter(Collision collision)
-    {
-        throw new System.NotImplementedException();
-    }
+    #region Variables
+    private EnemyStateManager _enemy;
+    #endregion
 
-    public override void StateStart(EnemyStateManager _enemy)
+    #region Inherited Functions
+    public override void StateStart(EnemyStateManager enemy)
     {
-        throw new System.NotImplementedException();
+        _enemy = enemy;
     }
-
     public override void StateUpdate()
     {
-        throw new System.NotImplementedException();
+
     }
+    public override void OnCollisionEnter(Collision collision)
+    {
+
+    }
+    #endregion
 }
