@@ -43,7 +43,7 @@ public class WalkingPlayerState : PlayerState
 
         // Apply the force to the _player
         if (_player.IsGrounded)
-            _player.Rigidbody.AddForce(_player.Direction.normalized * _player.WalkSpeed * 10f, ForceMode.Force);
+            _player.Rigidbody.AddForce((_player.Direction.normalized * _player.WalkSpeed * 10f) - _player.Rigidbody.velocity, ForceMode.Force);
         else
             _player.Rigidbody.AddForce(_player.Direction.normalized * _player.WalkSpeed * 10f * _player.AirMultiplier, ForceMode.Force);
     }
