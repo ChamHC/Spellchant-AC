@@ -35,6 +35,11 @@ public class ChaseEnemyState : EnemyState
         {
             _pathUpdateDeadline = Time.time + _updatePathDelay;
             _enemy.NavMeshAgent.SetDestination(_enemy.Target.position);
+
+            if (!_enemy.NavMeshAgent.hasPath)
+            {
+                Debug.Log(Time.time + ": Path Not Found");
+            }
         }
     }
 

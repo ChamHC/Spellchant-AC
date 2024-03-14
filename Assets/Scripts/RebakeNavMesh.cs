@@ -15,16 +15,5 @@ public class RebakeNavMesh : MonoBehaviour
     public void Rebake()
     {
         NavMeshSurface.BuildNavMesh();
-
-        RecalculatePath();
-    }
-
-    private void RecalculatePath()
-    {
-        List<EnemyStateManager> enemies = new List<EnemyStateManager>(FindObjectsOfType<EnemyStateManager>());
-        foreach (EnemyStateManager enemy in enemies)
-        {
-            enemy.NavMeshAgent.SetDestination(enemy.Target.position);
-        }
     }
 }

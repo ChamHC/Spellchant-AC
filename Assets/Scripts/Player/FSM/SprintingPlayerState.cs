@@ -27,6 +27,7 @@ public class SprintingPlayerState : PlayerState
         SpeedController();
 
         HeadBobHandler();
+        GravityHandler();
     }
     public override void OnCollisionEnter(Collision collision)
     {
@@ -99,6 +100,13 @@ public class SprintingPlayerState : PlayerState
             _player.Timer = 0;
             _player.PlayerCam.transform.localPosition = new Vector3(_player.PlayerCam.transform.localPosition.x, Mathf.Lerp(_player.PlayerCam.transform.localPosition.y, _player.DefaultPosY, Time.deltaTime * _player.SprintBobbingSpeed), _player.PlayerCam.transform.localPosition.z);
         }
+    }
+    #endregion
+
+    #region Gravity Functions
+    private void GravityHandler()
+    {
+        _player.Rigidbody.useGravity = !_player.IsOnSlope;
     }
     #endregion
 

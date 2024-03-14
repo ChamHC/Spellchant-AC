@@ -53,6 +53,8 @@ public class PlayerStateManager : MonoBehaviour
     [SerializeField, ReadOnly] public bool ReadyToJump;
     [SerializeField, ReadOnly] public float DefaultPosY;
     [SerializeField, ReadOnly] public float Timer = 0.0f;
+    [SerializeField, ReadOnly] public bool IsOnSlope;
+    [SerializeField, ReadOnly] public RaycastHit slopeHit;
 
     void Start()
     {
@@ -70,6 +72,7 @@ public class PlayerStateManager : MonoBehaviour
     void Update()
     {
         IsGrounded = Physics.Raycast(transform.position, Vector3.down, Collider.height * 0.5f + 0.2f, GroundLayer);
+        IsOnSlope = SlopeHandler();
 
         InputHandler();
 
@@ -93,5 +96,16 @@ public class PlayerStateManager : MonoBehaviour
     {
         // Reset Jump condition
         ReadyToJump = true;
+    }
+
+    private bool SlopeHandler()
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, Collider.height * 0.5f + 0.3f))
+        {
+            float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
+            return angle < 80f && angle != 0f;
+        }
+
+        return false;
     }
 }
