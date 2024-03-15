@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class PrimitiveShoot : MonoBehaviour
 {
-    public Camera PlayerCam;
     public GameObject ProjectilePrefab;
 
     [Header("Hidden Attributes")]
+    [SerializeField, ReadOnly] public Camera PlayerCam;
     [SerializeField, ReadOnly] private List<GameObject> _projectiles;
 
     void Start()
