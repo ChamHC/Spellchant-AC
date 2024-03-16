@@ -9,7 +9,7 @@ public class Mend : Spell
     public Element Element = Element.None;
     public float HealAmount = 20f;
 
-    public override void SpellStart()
+    public Mend()
     {
 
     }

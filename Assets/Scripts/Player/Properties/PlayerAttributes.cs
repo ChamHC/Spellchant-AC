@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerAttributes : MonoBehaviour
 {
+    [SerializeField, ReadOnly] public PlayerStateManager PlayerStateManager;
+
     [Header("Basic Attributes")]
     [SerializeField] public float CurrentHealth = 100f;
     [SerializeField] public float MaxHealth = 100f;
@@ -62,12 +64,20 @@ public class PlayerAttributes : MonoBehaviour
 
     void Start()
     {
-        
+        PlayerStateManager = GetComponent<PlayerStateManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Projectile Test")
+        {
+            CurrentHealth -= 10f;
+        }
     }
 }

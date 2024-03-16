@@ -17,7 +17,7 @@ public class Tombstone : Spell
     public float SummonSpeed = 10f;
     public float SummonDuration = 30f;
 
-    public override void SpellStart()
+    public Tombstone()
     {
 
     }

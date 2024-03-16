@@ -6,13 +6,15 @@ using UnityEngine.Windows.Speech;
 
 public class PhraseRecognition : MonoBehaviour
 {
-    [SerializeField] private PrimitiveShoot _primitiveShoot;
+    [SerializeField, ReadOnly] public string RecognizedPhrase;
     [SerializeField] private string[] _keywords;
     [SerializeField] private Image _vadIndicator;
     private KeywordRecognizer _recognizer;
 
     void Start()
     {
+        _keywords = new string[] { "Stone"};
+
         _recognizer = new KeywordRecognizer(_keywords, ConfidenceLevel.Low);
         _recognizer.OnPhraseRecognized += OnPhraseRecognized;
         _recognizer.Start();
@@ -33,10 +35,10 @@ public class PhraseRecognition : MonoBehaviour
     private void OnPhraseRecognized(PhraseRecognizedEventArgs args)
     {
         StringBuilder builder = new StringBuilder();
-        builder.AppendFormat("Text: {0}\n", args.text);
+        builder.AppendFormat("Text: {0}\n", args.text.ToLower());
         builder.AppendFormat("Time Taken: {0} seconds   ||  Confidence {1}\n", args.phraseDuration.TotalSeconds, args.confidence);
         Debug.Log(builder.ToString());
 
-        _primitiveShoot.Shoot();
+        RecognizedPhrase = args.text.ToLower();
     }
 }

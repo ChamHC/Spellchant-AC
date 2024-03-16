@@ -7,6 +7,8 @@ public class AttackEnemyState : EnemyState
     #region Variables
     private EnemyStateManager _enemy;
     private bool _isAimed;
+    private float _attackTimer;
+    private float _attackCooldown = 2f;
     #endregion
 
     #region Inherited Functions
@@ -37,6 +39,7 @@ public class AttackEnemyState : EnemyState
 
         if (Vector3.Angle(_enemy.transform.forward, lookPos) < 2f)
         {
+            _attackTimer += Time.deltaTime;
             _isAimed = true;
         }
         else
@@ -46,11 +49,12 @@ public class AttackEnemyState : EnemyState
     }
     private void Attack()
     {
-        if (!_isAimed) return;
+        if (!_isAimed || _attackTimer < _attackCooldown) return;
 
-        Debug.Log("Shoot");
+        Debug.Log("Shoot: " + _attackTimer + "s");
         GameObject _projectile = GameObject.Instantiate(_enemy.ProjectilePrefab, _enemy.transform.position + _enemy.transform.forward, Quaternion.identity);
         _projectile.transform.rotation = _enemy.transform.rotation;
+        _attackTimer = 0f;
     }
     #endregion
 

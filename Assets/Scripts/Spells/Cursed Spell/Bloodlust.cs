@@ -12,7 +12,7 @@ public class Bloodlust : Spell
     public float Duration = 15.0f;
     public float ExtraDamageTaken = 2.0f;
 
-    public override void SpellStart()
+    public Bloodlust()
     {
 
     }

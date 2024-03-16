@@ -17,7 +17,7 @@ public class SoulBargain : Spell
     public float SummonAttackSpeed = 1.0f;
     public float SummonMoveSpeed = 7.0f;
 
-    public override void SpellStart()
+    public SoulBargain()
     {
 
     }

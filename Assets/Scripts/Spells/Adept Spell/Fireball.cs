@@ -9,7 +9,7 @@ public class Fireball : Spell
     public Element Element = Element.Fire;
     public float Damage = 40;
 
-    public override void SpellStart()
+    public Fireball()
     {
 
     }

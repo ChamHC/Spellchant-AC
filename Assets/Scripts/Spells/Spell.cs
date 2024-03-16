@@ -2,8 +2,6 @@ using UnityEngine;
 
 public abstract class Spell
 {
-    public abstract void SpellStart();
-
     public abstract void SpellUpdate();
 
     public abstract void Effect();

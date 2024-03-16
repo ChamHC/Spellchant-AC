@@ -10,7 +10,7 @@ public class Regenerate : Spell
     public float HealAmount = 10f;
     public float Duration = 5f;
 
-    public override void SpellStart()
+    public Regenerate()
     {
 
     }

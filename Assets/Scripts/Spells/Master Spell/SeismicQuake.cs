@@ -10,7 +10,7 @@ public class SeismicQuake : Spell
     public float Damage = 110f;
     public float Radius = 10f;
 
-    public override void SpellStart()
+    public SeismicQuake()
     {
 
     }

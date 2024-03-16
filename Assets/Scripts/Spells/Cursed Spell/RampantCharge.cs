@@ -11,7 +11,7 @@ public class RampantCharge : Spell
     public float Cost = 10.0f;
     public float Duration = 5.0f;
 
-    public override void SpellStart()
+    public RampantCharge()
     {
 
     }

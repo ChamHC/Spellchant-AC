@@ -9,7 +9,7 @@ public class Boulder : Spell
     public Element Element = Element.Earth;
     public float Damage = 15;
 
-    public override void SpellStart()
+    public Boulder()
     {
 
     }

@@ -14,7 +14,7 @@ public class SpiritSiphon : Spell
     public float Range = 10f;
     public float SlowMultiplier = 0.5f;
 
-    public override void SpellStart()
+    public SpiritSiphon()
     {
 
     }

@@ -9,7 +9,7 @@ public class VitalSurge : Spell
     public Element Element = Element.None;
     public float HealAmount = 100f;
 
-    public override void SpellStart()
+    public VitalSurge()
     {
 
     }

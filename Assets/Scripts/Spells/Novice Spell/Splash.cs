@@ -9,7 +9,7 @@ public class Splash : Spell
     public Element Element = Element.Water;
     public float Damage = 10;
 
-    public override void SpellStart()
+    public Splash()
     {
 
     }

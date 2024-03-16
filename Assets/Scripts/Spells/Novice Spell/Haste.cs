@@ -9,7 +9,7 @@ public class Haste : Spell
     public Element Element = Element.None;
     public float BoostPercentage = 20f;
 
-    public override void SpellStart()
+    public Haste()
     {
 
     }

@@ -11,7 +11,7 @@ public class HydroVortex : Spell
     public float Damage = 30f;
     public float Radius = 10f;
 
-    public override void SpellStart()
+    public HydroVortex()
     {
 
     }

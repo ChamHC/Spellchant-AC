@@ -9,7 +9,7 @@ public class TorrentWave : Spell
     public Element Element = Element.Water;
     public float Damage = 20;
 
-    public override void SpellStart()
+    public TorrentWave()
     {
 
     }

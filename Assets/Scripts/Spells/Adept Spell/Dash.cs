@@ -9,7 +9,7 @@ public class Dash : Spell
     public Element Element = Element.None;
     public float Distance = 20f;
 
-    public override void SpellStart()
+    public Dash()
     {
 
     }

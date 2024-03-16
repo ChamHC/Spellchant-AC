@@ -10,7 +10,7 @@ public class Sustain : Spell
     public float HealAmount = 2f;
     public float Duration = 5f;
 
-    public override void SpellStart()
+    public Sustain()
     {
 
     }

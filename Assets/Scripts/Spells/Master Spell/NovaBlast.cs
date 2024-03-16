@@ -10,7 +10,7 @@ public class NovaBlast : Spell
     public float Damage = 120f;
     public float Radius = 10f;
 
-    public override void SpellStart()
+    public NovaBlast()
     {
 
     }

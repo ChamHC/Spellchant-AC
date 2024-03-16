@@ -9,7 +9,7 @@ public class Ignite : Spell
     public Element Element = Element.Fire;
     public float Damage = 20;
 
-    public override void SpellStart()
+    public Ignite()
     {
 
     }

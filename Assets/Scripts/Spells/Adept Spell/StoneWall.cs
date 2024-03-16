@@ -9,7 +9,7 @@ public class StoneWall : Spell
     public Element Element = Element.Earth;
     public float Damage = 30;
 
-    public override void SpellStart()
+    public StoneWall()
     {
 
     }

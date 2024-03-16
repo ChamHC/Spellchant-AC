@@ -9,7 +9,7 @@ public class BlinkOrb : Spell
     public Element Element = Element.None;
     public KeyCode BlinkKey = KeyCode.Mouse1;
 
-    public override void SpellStart()
+    public BlinkOrb()
     {
 
     }
