@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5636685063048034717}
   - component: {fileID: 8219553132406802249}
   - component: {fileID: 3457797377750136705}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ProjectileHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 3151027273490946013}
   - component: {fileID: 3151027273490946014}
   - component: {fileID: 5357490775372328979}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FadeLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -290,7 +290,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1566950764479827185}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Trails
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 5295586122231405367}
   - component: {fileID: 5295586122231405366}
   - component: {fileID: 5295586122231405361}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Digital Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5172,7 +5172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7219241201402355317}
   - component: {fileID: 7219241201402355315}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ProjGlowTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5327,7 +5327,7 @@ GameObject:
   - component: {fileID: 7219241201567629021}
   - component: {fileID: 7219241201567629018}
   - component: {fileID: 7219241201567629019}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5409,7 +5409,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7219241202059057264}
   - component: {fileID: 7219241202059057262}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ProjSmallTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5554,7 +5554,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7219241202446120839}
   - component: {fileID: 7219241202446120837}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ProjTrail2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5699,7 +5699,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7219241202816387755}
   - component: {fileID: 7219241202816387753}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ProjTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
