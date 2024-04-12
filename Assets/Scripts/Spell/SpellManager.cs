@@ -24,9 +24,9 @@ public class SpellManager : MonoBehaviour
         GameObject init = Instantiate(ArcaneStrikeSpell.InitPrefab, Origin.position + Origin.forward, Origin.rotation);
         init.transform.parent = gameObject.transform;
 
-        GameObject projectile = Instantiate(ArcaneStrikeSpell.ProjectilePrefab, Origin.position, Origin.rotation);
+        GameObject projectile = Instantiate(ArcaneStrikeSpell.ProjectilePrefab, transform.position, Origin.rotation);
         projectile.GetComponentInChildren<ArcaneStrike.CollisionManager>().CollisionPrefab = ArcaneStrikeSpell.CollisionPrefab;
-        projectile.tag = "Arcane Strike (Friendly)";
+        projectile.tag = "Arcane Strike";
         projectile.transform.parent = gameObject.transform;
         StartCoroutine(ArcaneStrikeDelayedBehaviour(projectile));
     }
@@ -39,7 +39,7 @@ public class SpellManager : MonoBehaviour
     }
     private void ArcaneStrikeBehaviour()
     {
-        GameObject[] arcaneStrikeObjects = GameObject.FindGameObjectsWithTag("Arcane Strike (Friendly)");
+        GameObject[] arcaneStrikeObjects = GameObject.FindGameObjectsWithTag("Arcane Strike");
         if (arcaneStrikeObjects.Length <= 0) return;
 
         foreach (GameObject projectile in arcaneStrikeObjects)

@@ -8,4 +8,7 @@ public class SpellProperty : ScriptableObject
     public GameObject InitPrefab;
     public GameObject ProjectilePrefab;
     public GameObject CollisionPrefab;
+
+    [Header("Spell Attributes")]
+    public float damage;
 }

@@ -18,3 +18,4 @@ MonoBehaviour:
     type: 3}
   CollisionPrefab: {fileID: 3010895046562501561, guid: 357ca1f3c55d5aa46a0e1bea4f0109ba,
     type: 3}
+  damage: 10

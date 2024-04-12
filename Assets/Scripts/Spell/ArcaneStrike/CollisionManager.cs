@@ -17,6 +17,16 @@ namespace ArcaneStrike
             {
                 Destroy(transform.parent.gameObject);
             }
+
+            if (other.gameObject.layer == LayerMask.NameToLayer("Entities"))
+            {
+                if (other.gameObject.tag == "Enemy")
+                {
+                    other.gameObject.GetComponent<EnemyAttributes>().CurrentHealth -= GameObject.Find("Player").GetComponent<SpellManager>().ArcaneStrikeSpell.damage;
+                    Debug.Log("Enemy Health: " + other.gameObject.GetComponent<EnemyAttributes>().CurrentHealth);
+                    Destroy(transform.parent.gameObject);
+                }
+            }
         }
     }
 }
