@@ -9,7 +9,6 @@ public class EnemyStateManager : MonoBehaviour
     [Header("FSM Attributes")]
     private EnemyState _currentState;
     public PatrolEnemyState PatrolState = new PatrolEnemyState();
-    public AlertEnemyState AlertState = new AlertEnemyState();
     public ChaseEnemyState ChaseState = new ChaseEnemyState();
     public AttackEnemyState AttackState = new AttackEnemyState();
 
@@ -25,7 +24,7 @@ public class EnemyStateManager : MonoBehaviour
 
         ShootDistance = NavMeshAgent.stoppingDistance;
 
-        _currentState = ChaseState;
+        _currentState = PatrolState;
         _currentState.StateStart(this);
     }
 

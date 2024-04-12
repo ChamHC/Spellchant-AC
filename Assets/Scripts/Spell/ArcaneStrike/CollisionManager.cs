@@ -11,7 +11,7 @@ namespace ArcaneStrike
         private void OnTriggerEnter(Collider other)
         {
             Instantiate(CollisionPrefab, transform.position, transform.rotation);
-            Debug.Log("Collided");
+            Debug.Log("Collided with " + other.gameObject.name);
 
             if (other.gameObject.layer == LayerMask.NameToLayer("Default"))
             {
