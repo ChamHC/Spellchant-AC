@@ -7,7 +7,8 @@ public class PatrolEnemyState : EnemyState
 {
     #region Variables
     private EnemyStateManager _enemy;
-    private LineRenderer _lineRenderer;
+    private LineRenderer _patrolLineRenderer;
+    private LineRenderer _viewLineRenderer;
     private float _patrolRadius = 10f;
     private bool _isCoroutineRunning;
     #endregion
@@ -96,26 +97,27 @@ public class PatrolEnemyState : EnemyState
 
     private void InitializeLineRenderer()
     {
-        _lineRenderer = _enemy.GetComponent<LineRenderer>();
-        _lineRenderer.startWidth = 0.1f;
-        _lineRenderer.endWidth = 0.1f;
-        _lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
-        _lineRenderer.startColor = Color.red;
-        _lineRenderer.endColor = Color.red;
-        _lineRenderer.positionCount = 360;
-        _lineRenderer.useWorldSpace = false;
+        _viewLineRenderer = _enemy.gameObject.GetComponentInChildren<LineRenderer>();
+        _viewLineRenderer.startWidth = 0.1f;
+        _viewLineRenderer.endWidth = 0.1f;
+        _viewLineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+        _viewLineRenderer.startColor = Color.red;
+        _viewLineRenderer.endColor = Color.red;
+        _viewLineRenderer.positionCount = 360;
+        _viewLineRenderer.useWorldSpace = false;
     }
 
     private void UpdateLineRenderer()
     {
-        Vector3[] positions = new Vector3[360];
+        float stoppingDistance = _enemy.NavMeshAgent.stoppingDistance;
+        Vector3[] _positions = new Vector3[360];
         for (int i = 0; i < 360; i++)
         {
             float angle = i * Mathf.Deg2Rad;
-            float x = Mathf.Sin(angle) * _patrolRadius;
-            float z = Mathf.Cos(angle) * _patrolRadius;
-            positions[i] = new Vector3(x, 0f, z);
+            float x = Mathf.Sin(angle) * stoppingDistance;
+            float z = Mathf.Cos(angle) * stoppingDistance;
+            _positions[i] = new Vector3(x, 0f, z);
         }
-        _lineRenderer.SetPositions(positions);
+        _viewLineRenderer.SetPositions(_positions);
     }
 }
