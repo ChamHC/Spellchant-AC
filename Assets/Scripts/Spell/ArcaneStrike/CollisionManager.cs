@@ -12,6 +12,11 @@ namespace ArcaneStrike
         {
             Instantiate(CollisionPrefab, transform.position, transform.rotation);
             Debug.Log("Collided");
+
+            if (other.gameObject.layer == LayerMask.NameToLayer("Default"))
+            {
+                Destroy(transform.parent.gameObject);
+            }
         }
     }
 }

@@ -33,7 +33,9 @@ public class SpellManager : MonoBehaviour
     private IEnumerator ArcaneStrikeDelayedBehaviour(GameObject projectile)
     {
         yield return new WaitForSeconds(0.2f);
-        projectile.transform.parent = null;
+
+        if (projectile != null)
+            projectile.transform.parent = null;
     }
     private void ArcaneStrikeBehaviour()
     {
