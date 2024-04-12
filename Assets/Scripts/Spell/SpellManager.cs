@@ -1,3 +1,4 @@
+using ArcaneStrike;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +11,10 @@ public class SpellManager : MonoBehaviour
 
     void Start()
     {
-        Origin = GetComponentInChildren<Camera>().transform;
+        if (GetComponentInChildren<Camera>() != null)
+            Origin = GetComponentInChildren<Camera>().transform;
+        else
+            Origin = transform;
     }
 
     void Update()
@@ -28,6 +32,8 @@ public class SpellManager : MonoBehaviour
         projectile.GetComponentInChildren<ArcaneStrike.CollisionManager>().CollisionPrefab = ArcaneStrikeSpell.CollisionPrefab;
         projectile.tag = "Arcane Strike";
         projectile.transform.parent = gameObject.transform;
+        projectile.GetComponentInChildren<CollisionManager>().Parent= gameObject;
+        Debug.Log("Tag Check: " + projectile.GetComponentInChildren<CollisionManager>().Parent.tag);
         StartCoroutine(ArcaneStrikeDelayedBehaviour(projectile));
     }
     private IEnumerator ArcaneStrikeDelayedBehaviour(GameObject projectile)

@@ -7,6 +7,7 @@ namespace ArcaneStrike
     public class CollisionManager : MonoBehaviour
     {
         public GameObject CollisionPrefab;
+        public GameObject Parent;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -20,10 +21,10 @@ namespace ArcaneStrike
 
             if (other.gameObject.layer == LayerMask.NameToLayer("Entities"))
             {
-                if (other.gameObject.tag == "Enemy")
+                if (other.gameObject.tag != Parent.tag)
                 {
-                    other.gameObject.GetComponent<EnemyAttributes>().CurrentHealth -= GameObject.Find("Player").GetComponent<SpellManager>().ArcaneStrikeSpell.damage;
-                    Debug.Log("Enemy Health: " + other.gameObject.GetComponent<EnemyAttributes>().CurrentHealth);
+                    other.gameObject.GetComponent<EntityAttributes>().CurrentHealth -= Parent.GetComponent<SpellManager>().ArcaneStrikeSpell.damage;
+                    Debug.Log(other.gameObject.tag + " Health: " + other.gameObject.GetComponent<EntityAttributes>().CurrentHealth);
                     Destroy(transform.parent.gameObject);
                 }
             }

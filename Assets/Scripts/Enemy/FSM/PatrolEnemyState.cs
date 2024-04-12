@@ -9,7 +9,7 @@ public class PatrolEnemyState : EnemyState
     private EnemyStateManager _enemy;
     private LineRenderer _patrolLineRenderer;
     private LineRenderer _viewLineRenderer;
-    private float _patrolRadius = 10f;
+    private float _patrolRadius;
     private bool _isCoroutineRunning;
     #endregion
 
@@ -17,12 +17,15 @@ public class PatrolEnemyState : EnemyState
     public override void StateStart(EnemyStateManager enemy)
     {
         _enemy = enemy;
+        _patrolRadius = _enemy.NavMeshAgent.stoppingDistance * 3f;
         SetRandomDestination();
         InitializeLineRenderer();
     }
 
     public override void StateUpdate()
     {
+        DetectPlayer();
+
         if (_enemy.NavMeshAgent.remainingDistance <= _enemy.NavMeshAgent.stoppingDistance)
         {
             SetRandomDestination();
@@ -119,5 +122,27 @@ public class PatrolEnemyState : EnemyState
             _positions[i] = new Vector3(x, 0f, z);
         }
         _viewLineRenderer.SetPositions(_positions);
+    }
+
+    private void DetectPlayer()
+    {
+        GameObject player = GameObject.FindWithTag("Player");
+        float viewDistance = _enemy.NavMeshAgent.stoppingDistance;
+        float fov = 60f;
+
+        float distanceToPlayer = Vector3.Distance(_enemy.transform.position, player.transform.position);
+        if (distanceToPlayer <= viewDistance)   // Player is within view distance
+        {
+            Vector3 directionToPlayer = player.transform.position - _enemy.transform.position;
+            float angleToPlayer = Vector3.Angle(_enemy.transform.forward, directionToPlayer);
+            if (angleToPlayer <= fov / 2f)  // Player is within the FOV
+            {
+                RaycastHit hit;
+                if (Physics.Raycast(_enemy.transform.position, directionToPlayer, out hit, viewDistance) && hit.collider.CompareTag("Player"))  // Player is within line of sight and no obstacles in between
+                {
+                    _enemy.SetState(_enemy.ChaseState);
+                }
+            }
+        }
     }
 }

@@ -8,7 +8,7 @@ public class AttackEnemyState : EnemyState
     private EnemyStateManager _enemy;
     private bool _isAimed;
     private float _attackTimer;
-    private float _attackCooldown = 2f;
+    private float _attackCooldown = 3f;
     #endregion
 
     #region Inherited Functions
@@ -52,8 +52,7 @@ public class AttackEnemyState : EnemyState
         if (!_isAimed || _attackTimer < _attackCooldown) return;
 
         Debug.Log("Shoot: " + _attackTimer + "s");
-        GameObject _projectile = GameObject.Instantiate(_enemy.ProjectilePrefab, _enemy.transform.position + _enemy.transform.forward, Quaternion.identity);
-        _projectile.transform.rotation = _enemy.transform.rotation;
+        _enemy.GetComponent<SpellManager>().ArcaneStrike();
         _attackTimer = 0f;
     }
     #endregion
