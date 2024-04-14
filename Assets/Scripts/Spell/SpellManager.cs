@@ -45,14 +45,30 @@ public class SpellManager : MonoBehaviour
     }
     private void ArcaneStrikeBehaviour()
     {
-        GameObject[] arcaneStrikeObjects = GameObject.FindGameObjectsWithTag("Arcane Strike");
-        if (arcaneStrikeObjects.Length <= 0) return;
+        List<GameObject> arcaneStrikeObjects = GetArcaneStrikeObjects();
+        if (arcaneStrikeObjects.Count <= 0) return;
 
         foreach (GameObject projectile in arcaneStrikeObjects)
         {
             projectile.transform.position += projectile.transform.forward * Time.deltaTime * 10f;
-
         }
+    }
+
+    private List<GameObject> GetArcaneStrikeObjects()
+    {
+        List<GameObject> arcaneStrikeObjects = new List<GameObject>();
+
+        GameObject[] gameObjectsWithTag = GameObject.FindGameObjectsWithTag("Arcane Strike");
+        foreach (GameObject gameObject in gameObjectsWithTag)
+        {
+            CollisionManager collisionManager = gameObject.GetComponentInChildren<CollisionManager>();
+            if (collisionManager != null && collisionManager.Parent == this.gameObject)
+            {
+                arcaneStrikeObjects.Add(gameObject);
+            }
+        }
+
+        return arcaneStrikeObjects;
     }
     #endregion
 }

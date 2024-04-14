@@ -13,14 +13,15 @@ public class EnemyStateManager : MonoBehaviour
     public AttackEnemyState AttackState = new AttackEnemyState();
 
     [Header("Enemy AI Attributes")]
-    public Transform Target;
-    public GameObject ProjectilePrefab;
+    [SerializeField, ReadOnly] public Transform Target;
     [SerializeField, ReadOnly] public NavMeshAgent NavMeshAgent;
     [SerializeField, ReadOnly] public float ShootDistance;
+    public GameObject ProjectilePrefab;
 
     void Start()
     {
         NavMeshAgent = GetComponent<NavMeshAgent>();
+        Target = GameObject.FindGameObjectWithTag("Player").transform;
 
         ShootDistance = NavMeshAgent.stoppingDistance;
 
