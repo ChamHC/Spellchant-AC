@@ -55,7 +55,7 @@ public class PatrolEnemyState : EnemyState
             if (!_isCoroutineRunning)
             {
                 _enemy.StartCoroutine(DelayedSetRandomDestination(randomPosition));
-                Debug.Log(_enemy.gameObject.name + ": Patrolling...");
+                //Debug.Log(_enemy.gameObject.name + ": Patrolling...");
             }
         }
         else

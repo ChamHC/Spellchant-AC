@@ -16,7 +16,7 @@ public class ChaseEnemyState : EnemyState
     public override void StateStart(EnemyStateManager enemy)
     {
         _enemy = enemy;
-        Debug.Log(_enemy.gameObject.name + ": Chasing...");
+        //Debug.Log(_enemy.gameObject.name + ": Chasing...");
     }
 
     public override void StateUpdate()

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 625d77053ee66f64d9bd616f3a72de1c, type: 3}
+  m_Name: Squad 3
+  m_EditorClassIdentifier: 
+  EnemyPrefabs:
+  - {fileID: 8053997999274749408, guid: 2b9665b7e0cc03843ac0485fb7f92681, type: 3}
+  - {fileID: 8053997999274749408, guid: 2b9665b7e0cc03843ac0485fb7f92681, type: 3}
+  - {fileID: 8053997999274749408, guid: 2b9665b7e0cc03843ac0485fb7f92681, type: 3}
+  - {fileID: 8053997999274749408, guid: 2b9665b7e0cc03843ac0485fb7f92681, type: 3}

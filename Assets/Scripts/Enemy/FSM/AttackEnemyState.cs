@@ -51,7 +51,7 @@ public class AttackEnemyState : EnemyState
     {
         if (!_isAimed || _attackTimer < _attackCooldown) return;
 
-        Debug.Log("Shoot: " + _attackTimer + "s");
+        //Debug.Log("Shoot: " + _attackTimer + "s");
         _enemy.GetComponent<SpellManager>().ArcaneStrike();
         _attackTimer = 0f;
     }
