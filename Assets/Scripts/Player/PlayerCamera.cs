@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
 {
-    [SerializeField, ReadOnly] public Camera Camera;
+    [SerializeField] public Camera Camera;
 
     [Header("Camera Settings")]
     [SerializeField, Range(0.1f, 10f), Tooltip("The sensitivity of the mouse on the X axis")] public float XSensitivity = 2f;
@@ -11,7 +11,7 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField, Range(0f, 180f), Tooltip("The maximum value for the X axis rotation")] public float UpperBoundary = 90f;
 
     [Header("Hidden Attributes")]
-    [SerializeField, ReadOnly] private Vector2 _rotation = Vector2.zero;
+    [SerializeField] private Vector2 _rotation = Vector2.zero;
 
     void Start()
     {

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SpellManager : MonoBehaviour
 {
-    [SerializeField, ReadOnly] public Transform Origin;
+    [SerializeField] public Transform Origin;
 
     [SerializeField] public SpellProperty ArcaneStrikeSpell;
 
@@ -22,6 +22,17 @@ public class SpellManager : MonoBehaviour
         ArcaneStrikeBehaviour();
     }
 
+    #region Ready
+    public void Ready()
+    {
+        GameObject player = Origin.parent.gameObject;
+        if (player.transform.position.y < 0)
+        {
+            FindObjectOfType<LevelManager>().PlayerIsReady = true;
+        }
+    }
+    #endregion
+
     #region Arcane Strike
     public void ArcaneStrike()
     {
@@ -33,7 +44,7 @@ public class SpellManager : MonoBehaviour
         projectile.tag = "Arcane Strike";
         projectile.transform.parent = gameObject.transform;
         projectile.GetComponentInChildren<CollisionManager>().Parent= gameObject;
-        Debug.Log("Tag Check: " + projectile.GetComponentInChildren<CollisionManager>().Parent.tag);
+        //Debug.Log("Tag Check: " + projectile.GetComponentInChildren<CollisionManager>().Parent.tag);
         StartCoroutine(ArcaneStrikeDelayedBehaviour(projectile));
     }
     private IEnumerator ArcaneStrikeDelayedBehaviour(GameObject projectile)

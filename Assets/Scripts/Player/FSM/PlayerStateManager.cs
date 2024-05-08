@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using VoxelDestruction;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerStateManager : MonoBehaviour
 {
-    [SerializeField, ReadOnly] public Rigidbody Rigidbody;
-    [SerializeField, ReadOnly] public CapsuleCollider Collider;
-    [SerializeField, ReadOnly] public Camera PlayerCam;
-    [SerializeField, ReadOnly] public LayerMask GroundLayer;
+    [SerializeField] public Rigidbody Rigidbody;
+    [SerializeField] public CapsuleCollider Collider;
+    [SerializeField] public Camera PlayerCam;
+    [SerializeField] public LayerMask GroundLayer;
 
     [Header("FSM")]
     private PlayerState _currentState;
@@ -46,15 +45,15 @@ public class PlayerStateManager : MonoBehaviour
     [SerializeField] public KeyCode JumpKey = KeyCode.Space;
 
     [Header("Hidden Attributes")]
-    [SerializeField, ReadOnly] public Vector3 Direction;
-    [SerializeField, ReadOnly] public bool IsGrounded;
-    [SerializeField, ReadOnly] public float HorizontalInput;
-    [SerializeField, ReadOnly] public float VerticalInput;
-    [SerializeField, ReadOnly] public bool ReadyToJump;
-    [SerializeField, ReadOnly] public float DefaultPosY;
-    [SerializeField, ReadOnly] public float Timer = 0.0f;
-    [SerializeField, ReadOnly] public bool IsOnSlope;
-    [SerializeField, ReadOnly] public RaycastHit slopeHit;
+    [SerializeField] public Vector3 Direction;
+    [SerializeField] public bool IsGrounded;
+    [SerializeField] public float HorizontalInput;
+    [SerializeField] public float VerticalInput;
+    [SerializeField] public bool ReadyToJump;
+    [SerializeField] public float DefaultPosY;
+    [SerializeField] public float Timer = 0.0f;
+    [SerializeField] public bool IsOnSlope;
+    [SerializeField] public RaycastHit slopeHit;
 
     void Start()
     {

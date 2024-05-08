@@ -12,7 +12,7 @@ namespace ArcaneStrike
         private void OnTriggerEnter(Collider other)
         {
             Instantiate(CollisionPrefab, transform.position, transform.rotation);
-            Debug.Log("Collided with " + other.gameObject.name);
+            //Debug.Log("Collided with " + other.gameObject.name);
 
             if (other.gameObject.layer == LayerMask.NameToLayer("Default"))
             {
@@ -24,7 +24,7 @@ namespace ArcaneStrike
                 if (other.gameObject.tag != Parent.tag)
                 {
                     other.gameObject.GetComponent<EntityAttributes>().CurrentHealth -= Parent.GetComponent<SpellManager>().ArcaneStrikeSpell.damage;
-                    Debug.Log(other.gameObject.tag + " Health: " + other.gameObject.GetComponent<EntityAttributes>().CurrentHealth);
+                    //Debug.Log(other.gameObject.tag + " Health: " + other.gameObject.GetComponent<EntityAttributes>().CurrentHealth);
                     Destroy(transform.parent.gameObject);
                 }
             }

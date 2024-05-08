@@ -13,9 +13,9 @@ public class EnemyStateManager : MonoBehaviour
     public AttackEnemyState AttackState = new AttackEnemyState();
 
     [Header("Enemy AI Attributes")]
-    [SerializeField, ReadOnly] public Transform Target;
-    [SerializeField, ReadOnly] public NavMeshAgent NavMeshAgent;
-    [SerializeField, ReadOnly] public float ShootDistance;
+    [SerializeField] public Transform Target;
+    [SerializeField] public NavMeshAgent NavMeshAgent;
+    [SerializeField] public float ShootDistance;
     public GameObject ProjectilePrefab;
 
     void Start()

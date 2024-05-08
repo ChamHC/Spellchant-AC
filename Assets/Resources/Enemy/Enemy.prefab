@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 1888940357099869244}
   - component: {fileID: 7325340423176783897}
   - component: {fileID: 1887259806593393669}
+  - component: {fileID: 6728738611373551715}
   m_Layer: 3
   m_Name: Enemy
   m_TagString: Enemy
@@ -299,6 +300,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 100
   CurrentHealth: 100
+  MaxMana: 100
+  CurrentMana: 100
 --- !u!120 &7325340423176783897
 LineRenderer:
   serializedVersion: 2
@@ -417,3 +420,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Origin: {fileID: 0}
   ArcaneStrikeSpell: {fileID: 11400000, guid: 5fc01120a8c4d484790bdd482d3c15c4, type: 2}
+--- !u!114 &6728738611373551715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8053997999274749408}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 3
+  outlineColor: {r: 0, g: 1, b: 1, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

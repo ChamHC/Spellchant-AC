@@ -6,14 +6,14 @@ using UnityEngine.Windows.Speech;
 
 public class PhraseRecognition : MonoBehaviour
 {
-    [SerializeField, ReadOnly] public string RecognizedPhrase;
+    [SerializeField] public string RecognizedPhrase;
     [SerializeField] private string[] _keywords;
     [SerializeField] private Image _vadIndicator;
-    private KeywordRecognizer _recognizer;
+    private PhraseRecognizer _recognizer;
 
     void Start()
     {
-        _keywords = new string[] { "Stone"};
+        _keywords = new string[] { "Shoot","Ready" };
 
         _recognizer = new KeywordRecognizer(_keywords, ConfidenceLevel.Low);
         _recognizer.OnPhraseRecognized += OnPhraseRecognized;

@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class RebakeNavMesh : MonoBehaviour
 {
-    [SerializeField, ReadOnly] public NavMeshSurface NavMeshSurface;
+    [SerializeField] public NavMeshSurface NavMeshSurface;
     public GameObject origin;
     public float rebuildRadius = 200f;
 

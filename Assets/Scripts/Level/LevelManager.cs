@@ -1,74 +1,105 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    public int Level;
-    public int Wave;
+    [SerializeField] public int CurrentLevel;
+    [SerializeField] public int CurrentWave;
 
     public LevelSetup[] LevelSetups;
-    public GameObject[] Spawnpoints;
-
-    private bool isSpawning = false;
+    [SerializeField] public GameObject[] Spawnpoints;
+    [SerializeField] private LevelSetup _currentLevel;
+    public bool PlayerIsReady = true;
+    private bool _hasSpawned = false;
+    private bool _waveFound = true;
+    private GameObject _player;
 
     void Start()
     {
-        Level = 0;
-        Wave = 3;
-        NextLevel();
+        Spawnpoints = GameObject.FindGameObjectsWithTag("Spawnpoint");
+        _player = GameObject.FindGameObjectWithTag("Player");
+
+        CurrentLevel = 1;
+        CurrentWave = 1;
+
+        GetLevelData();
     }
 
     void Update()
     {
-        NextLevel();
-        NextWave();
-    }
+        if (!PlayerIsReady && _player.transform.position.y > -10f)
+            _player.transform.position = new Vector3(0, -50f, 0);
+        else if (PlayerIsReady && _player.transform.position.y < -10)
+            _player.transform.position = new Vector3(0, 0, 0);
 
-    void NextWave()
-    {
-        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0 && !isSpawning)
+        if (!PlayerIsReady) return;
+
+        WaveHandler();
+
+        if (IsWaveFinished())
         {
-            Wave++;
-            Spawn();
-            Debug.Log("Next Wave.");
+            CurrentWave++;
+            _hasSpawned = false;
         }
+
+        if (!_waveFound)
+            LevelHandler();
     }
 
-    void NextLevel()
+    void LevelHandler()
     {
-        if (Wave == 3 && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
-        {
-            Level++;
-            Wave = 1;
-            Spawn();
-            Debug.Log("Next Level.");
-        }
+        Debug.Log("Finished level " + CurrentLevel);
+        PlayerIsReady = false;
+        CurrentLevel++;
+        CurrentWave = 1;
+        GetLevelData();
     }
 
-    void Spawn()
+    void WaveHandler()
     {
-        isSpawning = true;
-        foreach (var levelSetup in LevelSetups)
+        if (_hasSpawned || _currentLevel.Level != CurrentLevel) return;
+        _waveFound = false;
+        for (int i = 0; i < _currentLevel.WaveSetup.Length; i++)
         {
-            if (levelSetup.Level == Level)
+            if (_currentLevel.WaveSetup[i].Wave == CurrentWave)
             {
-                foreach (var waveSetup in levelSetup.WaveSetup)
-                {
-                    if (waveSetup.Wave == Wave)
-                    {
-                        foreach (var squad in waveSetup.SquadSetup)
-                        {
-                            var spawnpoint = Spawnpoints[Random.Range(0, Spawnpoints.Length)];
-                            foreach (var enemy in squad.EnemyPrefabs)
-                            {
-                                Instantiate(enemy, spawnpoint.transform.position, Quaternion.identity);
-                            }
-                        }
-                    }
-                }
+                Spawn(_currentLevel.WaveSetup[i]);
+                _waveFound = true;
             }
         }
-        isSpawning = false;
+        _hasSpawned = true;
+    }
+
+    void Spawn(WaveSetup waveData)
+    {
+        for (int i = 0; i < waveData.SquadSetup.Length; i++)
+        {
+            GameObject randomSpawnpoint = Spawnpoints[Random.Range(0, Spawnpoints.Length)];
+            for (int j = 0; j < waveData.SquadSetup[i].EnemyPrefabs.Count; j++)
+            {
+                Instantiate(waveData.SquadSetup[i].EnemyPrefabs[j], randomSpawnpoint.transform.position, Quaternion.identity);
+            }
+        }
+
+        Debug.Log("Finished spawning wave " + CurrentWave);
+    }
+
+    void GetLevelData()
+    {
+        foreach (LevelSetup levelSetup in LevelSetups)
+        {
+            if (levelSetup.Level == CurrentLevel)
+            {
+                _currentLevel = levelSetup;
+                break;
+            }
+        }
+    }
+
+    bool IsWaveFinished()
+    {
+        return GameObject.FindGameObjectsWithTag("Enemy").Length == 0 && _hasSpawned;
     }
 }
