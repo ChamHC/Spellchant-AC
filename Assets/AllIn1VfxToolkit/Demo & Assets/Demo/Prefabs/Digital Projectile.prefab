@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 3841539432540916316}
   - component: {fileID: 566726962229141000}
   - component: {fileID: 9091516123707710037}
-  - component: {fileID: 5636685063048034717}
-  - component: {fileID: 8219553132406802249}
   - component: {fileID: 3457797377750136705}
   m_Layer: 6
   m_Name: ProjectileHead
@@ -101,47 +99,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 450
   rotationAxis: {x: 0, y: 1, z: 0}
---- !u!114 &5636685063048034717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2754766920656849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30ff08c469fce27428b9f2213d6b6fa6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollisionPrefab: {fileID: 0}
-  Parent: {fileID: 0}
---- !u!54 &8219553132406802249
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2754766920656849}
-  serializedVersion: 4
-  m_Mass: 100
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 1
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!64 &3457797377750136705
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -157,7 +114,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -328,6 +285,9 @@ GameObject:
   - component: {fileID: 5295586122231405367}
   - component: {fileID: 5295586122231405366}
   - component: {fileID: 5295586122231405361}
+  - component: {fileID: 709641369469375333}
+  - component: {fileID: 3609811430757295276}
+  - component: {fileID: 9168561609918395468}
   m_Layer: 6
   m_Name: Digital Projectile
   m_TagString: Untagged
@@ -5163,6 +5123,61 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!54 &709641369469375333
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5295586122231405360}
+  serializedVersion: 4
+  m_Mass: 1000
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
+--- !u!114 &3609811430757295276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5295586122231405360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3ed51eab4578224fa9aa7fa9619ca4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionScale: 0.1
+  onlyDetectRb: 0
+--- !u!114 &9168561609918395468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5295586122231405360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30ff08c469fce27428b9f2213d6b6fa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionPrefab: {fileID: 0}
+  Parent: {fileID: 0}
 --- !u!1 &7219241201402355318
 GameObject:
   m_ObjectHideFlags: 0

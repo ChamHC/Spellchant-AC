@@ -1,8 +1,6 @@
-using AllIn1VfxToolkit.Demo.Scripts;
-using System.Collections.Generic;
-using Unity.AI.Navigation;
-using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CastManager : MonoBehaviour
 {
@@ -10,7 +8,9 @@ public class CastManager : MonoBehaviour
     [SerializeField] public Camera PlayerCam;
     [SerializeField] public SpellManager SpellManager;
     [SerializeField] public PhraseRecognition PhraseRecognition;
+    [SerializeField] public Image Overlay;
 
+    private float t = 0;
     void Start()
     {
         PlayerCam = GetComponentInChildren<Camera>();
@@ -20,28 +20,43 @@ public class CastManager : MonoBehaviour
 
     void Update()
     {
-        /*
+        
         if (Input.GetMouseButtonDown(0))    // FOR DEBUG ONLY
         {
-            SpellManager.ArcaneStrike();
+            //SpellManager.ArcaneStrike();
         }
-        */
-        switch (PhraseRecognition.RecognizedPhrase)
+        
+        switch (PhraseRecognition.spellText.text.ToLower())
         {
-            case "shoot":
-                SpellManager.ArcaneStrike();
-                SpellIsCasted();
+            case "arcane strike":
+                if (Input.GetMouseButtonDown(0)){
+                    SpellManager.ArcaneStrike();
+                    PhraseRecognition.spellText.text = "No Spell";
+                    Overlay.color = new Color(0, 0, 0, 0);
+                    Time.timeScale = 1;
+                    t = 0; 
+            break;
+                }
                 break;
             case "ready":
-            case "ray":
                 SpellManager.Ready();
-                SpellIsCasted();
+                PhraseRecognition.spellText.text = "No Spell";
+                break;
+            default:
                 break;
         }
-    }
 
-    void SpellIsCasted()
-    {
-        PhraseRecognition.RecognizedPhrase += " ( Casted )";
+        if (PhraseRecognition.spellText.text != "No Spell" && PhraseRecognition.spellText.text != "Ready" )
+        {
+            t += Time.unscaledDeltaTime;
+            Time.timeScale = Mathf.Lerp(1f, 0.5f, t);
+
+            Color currentColor = Overlay.color;
+            float alpha = Mathf.Lerp(0, 0.5f, t*2);
+            Overlay.color = new Color(currentColor.r, currentColor.g, currentColor.b, alpha);
+
+
+            Debug.Log(Time.timeScale);
+        }
     }
 }

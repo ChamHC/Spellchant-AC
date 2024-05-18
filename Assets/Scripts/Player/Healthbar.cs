@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Healthbar : MonoBehaviour
@@ -19,6 +20,13 @@ public class Healthbar : MonoBehaviour
         if (HealthFill != null && PlayerAttributes != null)
         {
             HealthFill.value = PlayerAttributes.CurrentHealth / PlayerAttributes.MaxHealth;
+        }
+
+        if (PlayerAttributes.CurrentHealth <= 0)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;  
+            SceneManager.LoadScene("End Screen");
         }
     }
 }
