@@ -23,7 +23,7 @@ public class CastManager : MonoBehaviour
         
         if (Input.GetMouseButtonDown(0))    // FOR DEBUG ONLY
         {
-            //SpellManager.ArcaneStrike();
+            SpellManager.ArcaneStrike();
         }
         
         switch (PhraseRecognition.spellText.text.ToLower())
@@ -38,7 +38,7 @@ public class CastManager : MonoBehaviour
             break;
                 }
                 break;
-            case "ready":
+            case "i am ready":
                 SpellManager.Ready();
                 PhraseRecognition.spellText.text = "No Spell";
                 break;
@@ -49,14 +49,11 @@ public class CastManager : MonoBehaviour
         if (PhraseRecognition.spellText.text != "No Spell" && PhraseRecognition.spellText.text != "Ready" )
         {
             t += Time.unscaledDeltaTime;
-            Time.timeScale = Mathf.Lerp(1f, 0.5f, t);
+            Time.timeScale = Mathf.Lerp(1f, 0.2f, t);
 
             Color currentColor = Overlay.color;
             float alpha = Mathf.Lerp(0, 0.5f, t*2);
             Overlay.color = new Color(currentColor.r, currentColor.g, currentColor.b, alpha);
-
-
-            Debug.Log(Time.timeScale);
         }
     }
 }

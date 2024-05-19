@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using VoxelDestruction;
 
 public class LevelManager : MonoBehaviour
 {
@@ -10,6 +13,7 @@ public class LevelManager : MonoBehaviour
 
     public LevelSetup[] LevelSetups;
     [SerializeField] public GameObject[] Spawnpoints;
+    [SerializeField] public TextMeshProUGUI DetailsText;
     [SerializeField] private LevelSetup _currentLevel;
     public bool PlayerIsReady = true;
     private bool _hasSpawned = false;
@@ -46,6 +50,18 @@ public class LevelManager : MonoBehaviour
 
         if (!_waveFound)
             LevelHandler();
+
+        if (CurrentLevel > LevelSetups.Length)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;  
+            SceneManager.LoadScene("End Screen");
+        }
+
+        DetailsText.text = 
+        "Level: " + CurrentLevel + "\n" +
+        "Wave: " + CurrentWave + "\n" +
+        "Enemies left: " + GameObject.FindGameObjectsWithTag("Enemy").Length;
     }
 
     void LevelHandler()

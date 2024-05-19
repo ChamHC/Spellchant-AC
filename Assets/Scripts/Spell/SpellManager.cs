@@ -2,16 +2,16 @@ using ArcaneStrike;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VoxelDestruction;
 
 public class SpellManager : MonoBehaviour
 {
     [SerializeField] public Transform Origin;
-
     [SerializeField] public SpellProperty ArcaneStrikeSpell;
 
     void Start()
     {
-            Origin = transform;
+        Origin = transform;
     }
 
     void Update()
@@ -22,11 +22,16 @@ public class SpellManager : MonoBehaviour
     #region Ready
     public void Ready()
     {
-        if (Origin.parent.gameObject != null){
-            GameObject player = Origin.parent.gameObject;
+        if (Origin.gameObject != null){
+            GameObject player = Origin.gameObject;
             if (player.transform.position.y < 0)
             {
                 FindObjectOfType<LevelManager>().PlayerIsReady = true;
+            }
+            VoxelObject[] VoxelObjects = FindObjectsOfType<VoxelObject>();;
+            foreach (VoxelObject voxelObject in VoxelObjects)
+            {
+                voxelObject.ResetModel(true);
             }
         }
     }

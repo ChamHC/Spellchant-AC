@@ -13,7 +13,7 @@ public class PhraseRecognition : MonoBehaviour
 
     void Start()
     {
-        _keywords = new string[] { "Ready", "Arcane Strike" };
+        _keywords = new string[] { "I Am Ready", "Arcane Strike" };
 
         _recognizer = new KeywordRecognizer(_keywords, ConfidenceLevel.Low);
         _recognizer.OnPhraseRecognized += OnPhraseRecognized;
